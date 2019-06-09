@@ -3,7 +3,7 @@ import UrlRow from './UrlRow';
 import { Url } from '../../types';
 
 export interface Props {
-  records: Url[]
+  records: Url[];
 }
 
 export function UrlList(props: Props) {
