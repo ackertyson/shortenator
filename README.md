@@ -1,4 +1,4 @@
-# URLster
+# Shortenator
 
 Demo project inspired by TinyURL
 
