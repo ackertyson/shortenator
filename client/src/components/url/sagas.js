@@ -1,43 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-const apiHost = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
-const urlMask = /^https?:\/\/[-_.a-zA-Z0-9]+\.[-_.a-zA-Z0-9]+/;
-
-const Api = {
-  addUrl: async (url) => {
-    if (!urlMask.test(url)) throw new Error('Bad URL format');
-
-    const request = new Request(
-      `${apiHost}/urls`,
-      {
-        method: 'POST',
-        body: JSON.stringify({ url }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-
-    return fetch(request)
-      .then(res => res.json());
-  },
-
-  fetchUrls: async () => {
-    const request = new Request(
-      `${apiHost}/urls`,
-      {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json'
-        }
-      }
-    );
-
-    return fetch(request)
-      .then(res => res.json());
-  }
-};
+import Api from './api';
 
 function* addUrl(action) {
    try {
