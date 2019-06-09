@@ -1,6 +1,6 @@
 const UrlModel = require('./model')();
 
-const urlMask = /^https?:\/\/[-_.a-zA-Z]+\.[-_.a-zA-Z]+/;
+const urlMask = /^https?:\/\/[-_.a-zA-Z0-9]+\.[-_.a-zA-Z0-9]+/;
 
 module.exports = {
   all: async (ctx) => {
