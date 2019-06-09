@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+// import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import './App.css';

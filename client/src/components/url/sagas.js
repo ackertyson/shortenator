@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+const apiHost = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const urlMask = /^https?:\/\/[-_.a-zA-Z0-9]+\.[-_.a-zA-Z0-9]+/;
 
@@ -7,7 +8,7 @@ const Api = {
     if (!urlMask.test(url)) throw new Error('Bad URL format');
 
     const request = new Request(
-      'http://localhost:5000/urls',
+      `${apiHost}/urls`,
       {
         method: 'POST',
         body: JSON.stringify({ url }),
@@ -24,7 +25,7 @@ const Api = {
 
   fetchUrls: async () => {
     const request = new Request(
-      'http://localhost:5000/urls',
+      `${apiHost}/urls`,
       {
         method: 'GET',
         headers: {

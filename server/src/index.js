@@ -15,7 +15,7 @@ const corsOpts = {
       return origin;
     }
 
-    throw new Error('Not allowed by CORS');
+    throw new Error(`Not allowed by CORS: ${origin}`);
   }
 };
 
