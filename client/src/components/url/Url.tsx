@@ -36,6 +36,7 @@ export class UrlContainer extends React.Component<Props, State> {
   render() {
     return (
       <section>
+        <h2>URLs</h2>
         <UrlForm/>
         <UrlList records={this.props.records || []}/>
       </section>

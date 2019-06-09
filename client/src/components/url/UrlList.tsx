@@ -14,7 +14,7 @@ export function UrlList(props: Props) {
         <tr>
           <th>Original URL</th>
           <th>Tiny URL</th>
-          <th>Hits</th>
+          <th>Hit Count</th>
         </tr>
       </thead>
       <tbody>

@@ -41,7 +41,7 @@ export class UrlForm extends React.Component<Props, State> implements FormContai
         <button type="button" onClick={this.handleFormSubmit}>
           Create URL
         </button>
-        <div className="error">{this.props.errorMessage}</div>
+        {this.props.errorMessage && <div className="error">Error: {this.props.errorMessage}</div>}
       </section>
     );
   }
