@@ -5,20 +5,29 @@ services:
     build:
       context: ./client
     depends_on:
+      - nginx
       - server
+    environment:
+      - REACT_APP_API_URL
     image: local/tinyurl-demo-ui:latest
     ports:
       - '3000:3000'
-    volumes:
-      - ./client:/home/app
-      - /home/app/node_modules
 
   server:
     build:
       context: ./server
+    depends_on:
+      - nginx
+    environment:
+      - PROD_API_URI
     image: local/tinyurl-demo-server:latest
     ports:
       - '5000:5000'
-    volumes:
-      - ./server:/home/app
-      - /home/app/node_modules
+
+  nginx:
+    build:
+      context: ./nginx
+    image: local/nginx-tinyurl
+    ports:
+      - '80:80'
+    restart: always

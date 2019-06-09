@@ -1,11 +1,13 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const cors = require('@koa/cors');
+const helmet = require('koa-helmet');
 const { errors } = require('./middleware');
 const router = require('./router');
 
 const whitelist = [
-  'http://localhost:3000'
+  'http://localhost:3000',
+  process.env.PROD_API_URI
 ];
 
 const corsOpts = {
@@ -22,6 +24,7 @@ const corsOpts = {
 const port = process.env.PORT || 5000;
 const app = new Koa();
 app
+  .use(helmet())
   .use(errors)
   .use(cors(corsOpts))
   .use(bodyParser())

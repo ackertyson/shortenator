@@ -2,8 +2,7 @@ FROM node:10
 
 RUN useradd --user-group --create-home --shell /bin/false app
 
-ENV HOME=/home/app \
-  REACT_APP_API_URL=http://localhost:5000
+ENV HOME=/home/app
 
 COPY package.json $HOME/
 COPY package-lock.json $HOME/
