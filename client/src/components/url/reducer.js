@@ -3,7 +3,8 @@ import * as types from './actionTypes';
 
 const initialState = {
   errorMessage: null,
-  records: []
+  records: [],
+  url: ''
 };
 
 export default function url(state = initialState, action) {
@@ -14,7 +15,8 @@ export default function url(state = initialState, action) {
         records: [
           action.record,
           ...state.records
-        ]
+        ],
+        url: ''
       });
 
     case types.ADD_URL_FAILURE:
@@ -31,6 +33,11 @@ export default function url(state = initialState, action) {
     case types.FETCH_URLS_FAILURE:
       return assign({}, state, {
         errorMessage: action.error.message
+      });
+
+    case types.UPDATE_URL:
+      return assign({}, state, {
+        url: action.url
       });
 
     default:

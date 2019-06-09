@@ -4,55 +4,66 @@ import * as actions from './actions';
 import { FormContainer, InputEvent } from '../../types';
 
 export interface Props {
-  addUrl: Function,
-  errorMessage: string
+  addUrl: Function;
+  errorMessage: string;
+  updateUrl: Function;
+  url: string;
 }
 
-export interface State {
-  url: string
-}
+export interface State {}
 
 export class UrlForm extends React.Component<Props, State> implements FormContainer {
   constructor(props: Props) {
     super(props);
 
-    this.state = { url: '' };
-
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleFormSubmit(): void {
-    this.props.addUrl(this.state.url);
+  getInputClass() {
+    return this.props.errorMessage ? 'error' : '';
+  }
+
+  handleFormSubmit(event: React.FormEvent): void {
+    event.preventDefault();
+    this.props.addUrl(this.props.url);
   }
 
   handleInputChange(event: InputEvent): void {
     const { name, value } = event.target;
-    this.setState({ [name]: value } as unknown as Pick<State, keyof State>);
+    if (name === 'url') {
+      this.props.updateUrl(value);
+    }
   }
 
   render() {
     return (
-      <section>
-        <input
-          type="text"
-          name="url"
-          onChange={this.handleInputChange}/>
-        <button type="button" onClick={this.handleFormSubmit}>
-          Create URL
-        </button>
-        {this.props.errorMessage && <div className="error">Error: {this.props.errorMessage}</div>}
+      <section className="group">
+        <form>
+          <input
+            className={this.getInputClass()}
+            type="text"
+            name="url"
+            value={this.props.url}
+            onChange={this.handleInputChange}/>
+          {this.props.errorMessage && <p className="error">Error: {this.props.errorMessage}</p>}
+          <button type="submit" onClick={this.handleFormSubmit}>
+            Create URL
+          </button>
+        </form>
       </section>
     );
   }
 }
 
 const mapStateToProps = (state: any) => ({
-  errorMessage: state.url.errorMessage
+  errorMessage: state.url.errorMessage,
+  url: state.url.url
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
-  addUrl: (url: string) => dispatch(actions.addUrl(url))
+const mapDispatchToProps = (dispatch: Function) => ({
+  addUrl: (url: string) => dispatch(actions.addUrl(url)),
+  updateUrl: (url: string) => dispatch(actions.updateUrl(url))
 });
 
 export default connect(
