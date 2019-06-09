@@ -1,7 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-// import Api from '...';
+
+const urlMask = /^https?:\/\/[-_.a-zA-Z]+\.[-_.a-zA-Z]+/;
+
 const Api = {
   addUrl: async (url) => {
+    if (!urlMask.test(url)) throw new Error('Bad URL format');
+
     const request = new Request(
       'http://localhost:5000/urls',
       {

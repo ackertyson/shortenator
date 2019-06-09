@@ -1,5 +1,7 @@
 const UrlModel = require('./model')();
 
+const urlMask = /^https?:\/\/[-_.a-zA-Z]+\.[-_.a-zA-Z]+/;
+
 module.exports = {
   all: async (ctx) => {
     ctx.body = await UrlModel.all();
@@ -19,8 +21,9 @@ module.exports = {
     const { url } = ctx.request.body;
     if (!url) return ctx.throw(422);
 
-    const inserted = await UrlModel.insert({ url });
+    if (!urlMask.test(url)) return ctx.throw(422, 'Bad URL format');
 
+    const inserted = await UrlModel.insert({ url });
     ctx.body = inserted;
     ctx.status = 201;
   }
