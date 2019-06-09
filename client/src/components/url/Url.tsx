@@ -10,28 +10,10 @@ export interface Props {
   records: Url[];
 }
 
-export interface State {}
-
-export class UrlContainer extends React.Component<Props, State> {
-  // constructor(props: Props) {
-  //   super(props);
-  //
-  //   this.onUpdate = this.onUpdate.bind(this);
-  // }
-
+export class UrlContainer extends React.Component<Props> {
   componentDidMount() {
     this.props.fetchUrls();
   }
-
-  // onUpdate(url: Url): void {
-  //   const records = this.props.records
-  //     .map(record => {
-  //       if (record.id === url.id) {
-  //         record.hits += 1;
-  //       }
-  //       return record;
-  //     });
-  // }
 
   render() {
     return (

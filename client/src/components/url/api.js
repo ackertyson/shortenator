@@ -2,6 +2,7 @@ import assign from 'lodash.assign';
 
 const urlMask = /^https?:\/\/[-_.a-zA-Z0-9]+\.[-_.a-zA-Z0-9]+/;
 const apiHost = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 function request({ path, method, headers, body }) {
   const params = { method };
   if (body) assign(params, { body: JSON.stringify(body) });

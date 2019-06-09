@@ -1,0 +1,14 @@
+{
+	"id": "ed08803e-faa6-467d-8262-d009a07e63cf",
+	"name": "Shortenator",
+	"values": [
+		{
+			"key": "urlId",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-06-09T23:55:59.440Z",
+	"_postman_exported_using": "Postman/7.1.1"
+}

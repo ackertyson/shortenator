@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "11097570-5990-4de8-a07c-58ce52b4af34",
+		"name": "Shortenator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add URL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "27f360c9-82f1-46c0-a583-4d1fbff1f5a2",
+						"exec": [
+							"pm.test(\"Set urlId\", function() {",
+							"  pm.expect(pm.response.status).to.eql('Created');",
+							"  pm.environment.set(\"urlId\", pm.response.json().id);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"url\": \"https://providejs.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/urls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"urls"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get URL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d266091-0da4-46b7-8e3b-3ac7008a6cf8",
+						"exec": [
+							"pm.test(\"Get URL\", function() {",
+							"  pm.expect(pm.response.status).to.eql('OK');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/urls/{{urlId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"urls",
+						"{{urlId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add URL (bad format)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85599985-381e-49f5-af09-ab0e8e294418",
+						"exec": [
+							"pm.test(\"Get URL\", function() {",
+							"  pm.expect(pm.response.status).to.eql('Unprocessable Entity');",
+							"  pm.expect(pm.response.json().message).to.eql('Bad URL format');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"url\": \"no-protocol.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/urls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"urls"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

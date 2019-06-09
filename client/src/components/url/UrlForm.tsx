@@ -10,9 +10,7 @@ export interface Props {
   url: string;
 }
 
-export interface State {}
-
-export class UrlForm extends React.Component<Props, State> implements FormContainer {
+export class UrlForm extends React.Component<Props> implements FormContainer {
   constructor(props: Props) {
     super(props);
 
