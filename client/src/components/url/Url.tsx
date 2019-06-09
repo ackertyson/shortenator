@@ -48,7 +48,7 @@ const mapStateToProps = (state: any) => ({
   records: state.url.records
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   fetchUrls: () => dispatch(actions.fetchUrls())
 });
 

@@ -1,11 +1,68 @@
+body {
+  background-color: lightgray;
+}
+
 .App {
+  color: rgba(50,50,80, 1);
+  margin: 3rem auto;
+  width: 80%;
+}
+
+h2 {
+  margin-left: 1.75rem;
+}
+
+.group {
+  background-color: white;
+  border: 1px solid gray;
+  margin: 2rem;
+  padding: 1.5rem;
+  /* width: 100%; */
+}
+
+a {
+  text-decoration: none;
+  color: rgba(50,50,80, 1);
+}
+
+button {
+  display: block;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+input[type="text"] {
+  border: 1px solid rgba(50,50,80, 1);
+  padding: 0.5rem;
+  width: 96%;
+}
+
+input[type="text"].error {
+  border: 1px solid red;
+}
+
+section.group, input, button, table, td, th {
+  border-radius: 5px;
+}
+
+table {
+  border: 1px solid gray;
+  border-collapse: collapse;
+  width: 94%;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: 0.75rem;
   text-align: left;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+p.error {
+  color: red;
+  font-weight: bold;
 }
 
 .App-header {
@@ -21,11 +78,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-.error {
-  color: red;
-  font-weight: bold;
 }
 
 @keyframes App-logo-spin {

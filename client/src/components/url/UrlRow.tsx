@@ -11,7 +11,7 @@ export function UrlRow(props: Props) {
   return (
     <tr>
       <td>{props.record.url}</td>
-      <td>http://localhost:5000/t/{props.record.id}</td>
+      <td><a href={'http://localhost:5000/t/'+props.record.id}>http://localhost:5000/t/{props.record.id}</a></td>
       <td>{props.record.hits}</td>
     </tr>
   );

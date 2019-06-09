@@ -9,7 +9,7 @@ export interface Props {
 export function UrlList(props: Props) {
   const records = props.records.map(record => <UrlRow key={record.id} record={record}/>);
   return (
-    <table>
+    <table className="group">
       <thead>
         <tr>
           <th>Original URL</th>
