@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import Api from './api';
 
-function* addUrl(action) {
+export function* addUrl(action) {
    try {
       const record = yield call(Api.addUrl, action.url);
       yield put({ type: "ADD_URL_SUCCESS", record });
@@ -10,7 +10,7 @@ function* addUrl(action) {
    }
 }
 
-function* fetchUrls(action) {
+export function* fetchUrls(action) {
    try {
       const records = yield call(Api.fetchUrls);
       yield put({ type: "FETCH_URLS_SUCCESS", records });
