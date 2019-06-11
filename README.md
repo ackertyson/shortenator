@@ -16,3 +16,8 @@ In another:
 2. `npm install`
 3. `npm start`
 4. Open browser to `http://localhost:3000`
+
+# Testing
+
+1. `cd client`
+2. `npm test`
